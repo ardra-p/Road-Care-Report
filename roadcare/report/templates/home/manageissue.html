@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Road Care Admin - Issue Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Public Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/10 flex items-center justify-center rounded-xl w-10 h-10 text-primary">
+<span class="material-symbols-outlined text-2xl">add_road</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Road Care</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Admin Panel</p>
+</div>
+</div>
+
+</div>
+</header>
+<main class="max-w-7xl mx-auto w-full px-4 md:px-10 py-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-slate-500 text-sm mb-6">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span class="material-symbols-outlined !text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">Issues</a>
+<span class="material-symbols-outlined !text-sm">chevron_right</span>
+<span class="text-slate-900 font-medium">Issue #TKT-4055</span>
+</nav>
+<!-- Page Title & Main Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-slate-50">Issue #{{ issue.issue_id }}</h1>
+<span class="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-500 rounded-full text-xs font-bold uppercase tracking-wider">{{ issue.admin_status }}</span>
+</div>
+<p class="text-slate-500">Reported on {{ issue.submitted_at }} • Severity: <span class="text-red-600 font-semibold">{{ issue.status }}</span></p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 font-bold rounded-lg transition-all text-sm">
+<span class="material-symbols-outlined !text-lg">sticky_note_2</span>
+                    Add Internal Note
+                </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all text-sm shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined !text-lg">update</span>
+                    Update Status
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left & Middle Column (Main Content) -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Damage Assessment Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-lg">Damage Assessment</h3>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded text-xs font-semibold">Pothole</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded text-xs font-semibold">Drainage</span>
+</div>
+</div>
+<div class="p-6">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="relative rounded-lg overflow-hidden group">
+<img class="w-full h-64 object-cover" data-alt="Close up photo of a large deep pothole in asphalt road" src="{{ issue.image_path.url }}"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-slate-900 px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2">
+<span class="material-symbols-outlined">zoom_in</span> View Full Image
+                                        </button>
+</div>
+</div> 
+<p class="text-sm text-slate-500 italic">User-uploaded photo • Captured {{ issue.submitted_at }}</p>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex items-end gap-4">
+<div class="text-4xl font-black text-red-600">85%</div>
+<div class="pb-1 text-red-600 font-bold uppercase tracking-tight">Critical Severity</div>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full mt-3 overflow-hidden">
+<div class="bg-red-600 h-full w-[85%] rounded-full"></div>
+</div>
+</div>
+<div>
+  {% if issue.issue_description %}
+<label class="text-xs font-bold uppercase text-slate-400 tracking-widest block mb-2">Issue Description</label>
+<p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                                        {{ issue.issue_description }}</p>
+                                        {% endif %}
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-lg">Location</h3>
+<div class="flex items-center gap-1.5 text-primary">
+  <a href="https://www.google.com/maps?q={{issue.latitude}},{{issue.longitude}}" target="_blank">
+<span class="material-symbols-outlined !text-lg">location_on</span>
+<span class="text-sm font-bold">Open in Maps</span></a>
+</div>
+</div>
+<div class="grid md:grid-cols-3 h-80">
+<div class="md:col-span-2 relative h-full bg-slate-200 dark:bg-slate-800">
+<!-- Map placeholder -->
+<div class="absolute inset-0 flex items-center justify-center opacity-30 grayscale pointer-events-none">
+<span class="material-symbols-outlined !text-9xl">map</span>
+</div>
+<img class="w-full h-full object-cover" data-alt="Satellite map view of city intersection" data-location="Los Angeles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1r6tMEtHGB3KOTJqd64uzvac5IfBdZhL2MeoB0jjoo29GyZ0KcH9fUKELSZcfe4C2US_eswbNi4uuHAzXCqVXe2z6RH9UQgRnR_cOKMYvIigkRD5_azgMG18ud8HM4HgVcrpUMFbIGAZzDuxlgIGr_zx31mhrpKpgT4DlZixvSLTqTQ5T71U4xjI3XwsF45mpkKoDc6nb8I8EhgHv9Rc-K-LXFaVI1gut3R6JZR4SOxHTYRp5Ky981L3vVjYtIQBdn9V5-nIfEjTJ"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-red-500 p-1 rounded-full shadow-lg animate-bounce">
+<div class="bg-white p-1 rounded-full">
+<div class="bg-red-500 size-3 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50 dark:bg-slate-800/50 space-y-6">
+<div>
+<label class="text-xs font-bold uppercase text-slate-400 tracking-widest block mb-1">GPS Coordinates</label>
+<p class="font-mono text-sm text-slate-800 dark:text-slate-200">{{ issue.latitude }}, {{ issue.longitude }}</p>
+</div>
+<div>
+<label class="text-xs font-bold uppercase text-slate-400 tracking-widest block mb-1">Street Address</label>
+<p class="text-slate-800 dark:text-slate-200">{{ issue.address }}</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity Timeline -->
+ <!--<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-lg">Activity Timeline</h3>
+</div>
+<div class="p-6 space-y-8">
+
+<div class="relative pl-8 pb-8 border-l-2 border-slate-100 dark:border-slate-800 last:pb-0 last:border-l-0">
+<div class="absolute left-[-9px] top-0 size-4 bg-primary rounded-full ring-4 ring-primary/20"></div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Status updated to 'In Progress'</p>
+<p class="text-sm text-slate-500">By Admin (Sarah Wilson)</p>
+</div>
+<span class="text-xs text-slate-400 font-medium">Today, 10:15 AM</span>
+</div>
+</div>
+<div class="relative pl-8 pb-8 border-l-2 border-slate-100 dark:border-slate-800 last:pb-0">
+<div class="absolute left-[-9px] top-0 size-4 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Internal note added</p>
+<p class="text-sm text-slate-500 italic leading-relaxed mt-2 bg-slate-50 dark:bg-slate-800 p-3 rounded-lg border-l-4 border-primary/40">
+                                        "Assigned to Crew A. Requires specialized milling equipment due to depth. Traffic control will be needed."
+                                    </p>
+</div>
+<span class="text-xs text-slate-400 font-medium">Today, 10:12 AM</span>
+</div>
+</div>
+<div class="relative pl-8 pb-0 border-l-2 border-slate-100 dark:border-slate-800 last:pb-0">
+<div class="absolute left-[-9px] top-0 size-4 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+<div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Report Submitted</p>
+<p class="text-sm text-slate-500">By citizen (James Rodriguez)</p>
+</div>
+<span class="text-xs text-slate-400 font-medium">Oct 24, 09:45 AM</span>
+</div>
+</div>
+</div>
+</section>-->
+</div>
+<!-- Right Column (Sidebar) -->
+
+<div class="space-y-8">
+<!-- Reporter Information -->
+  {% if issue.user_name or issue.user_phone or issue.user_email %}
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-5 border-b border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-base">Reporter Information</h3>
+</div>
+<div class="p-5 space-y-5">
+<div class="space-y-4 pt-2">
+  {% if issue.user_email %}
+
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined !text-lg text-slate-400">mail</span>
+<span class="text-slate-700 dark:text-slate-300">{{ issue.user_email }}
+</span>
+</div>
+{% endif %}
+{% if issue.user_phone %}
+<div class="flex items-center gap-3 text-sm">
+<span class="material-symbols-outlined !text-lg text-slate-400">call</span>
+<span class="text-slate-700 dark:text-slate-300">{{ issue.user_phone }}</span>
+</div>
+{% endif %}
+</div>
+<button class="w-full py-2 bg-slate-50 dark:bg-slate-800 hover:bg-primary/10 hover:text-primary transition-all rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                            Contact Reporter
+                        </button>
+</div>
+</section>
+{% endif %}
+<!-- Issue Context 
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-5 border-b border-slate-200 dark:border-slate-800">
+<h3 class="font-bold text-base">Issue Context</h3>
+</div>
+<div class="p-5 space-y-4">
+<div class="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
+<p class="text-xs font-bold text-primary uppercase mb-1">Maintenance History</p>
+<p class="text-sm text-slate-700 dark:text-slate-300">Last surfacing on this stretch was done in <strong>July 2021</strong>. No open issues within 500m radius.</p>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Category</span>
+<span class="font-medium">Maintenance</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Priority Level</span>
+<span class="font-bold text-red-600">High</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Assigned Crew</span>
+<span class="font-medium text-primary">Rapid Response Team A</span>
+</div>
+</div>
+</div>
+</section> -->
+<!-- Internal Admin Notes -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="p-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold text-base">Internal Admin Notes</h3>
+<span class="material-symbols-outlined !text-lg text-slate-400 cursor-pointer hover:text-primary">edit</span>
+</div>
+<div class="p-5">
+  {% if issue.remark %}
+<div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3 text-sm text-slate-700 dark:text-slate-300 mb-4 border border-dashed border-slate-200 dark:border-slate-700">
+                            {{ issue.remarks }}
+</div>
+{% endif %}
+<textarea class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm p-3 focus:ring-1 focus:ring-primary min-h-[80px] placeholder:text-slate-500" placeholder="Type a new note..."></textarea>
+<button class="w-full mt-3 py-2 bg-primary text-white font-bold rounded-lg text-xs shadow-sm shadow-primary/20">
+                            Save Note
+                        </button>
+</div>
+</section>
+<a href="{% url 'delete_issue' issue.issue_id %}">delete</a>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-12 py-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-400 text-sm">© 2023 Road Care System • Admin Dashboard v2.4.0</p>
+</footer>
+</div>
+</body></html>
