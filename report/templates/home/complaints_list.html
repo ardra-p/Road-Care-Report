@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Complaints List</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<script>
+        // Simple script to toggle dark mode for demonstration
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-white font-display transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-[#111318] dark:text-white">
+<div class="size-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">traffic</span>
+</div>
+<h2 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Road Care Admin</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<!-- Dark Mode Toggle (For Demo) -->
+<button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300" onclick="toggleDarkMode()">
+<span class="material-symbols-outlined">contrast</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gray-100 dark:bg-gray-700 text-[#111318] dark:text-white text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+<span class="truncate">Logout</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200 dark:border-gray-700" data-alt="Admin user profile picture showing a professional headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDaa0xxc40jb8bdUfNCPn2R4E-M_ggzFyxYHTct8lZrohEwhIvtwpaN85A2N76zWMMGFGTzxZvFAtpjXXO21Wd6YpJJAftnlcBqVULD7tYPc7M1Sdiei3TiGQtEWT_BlG0dKdDtfOP9mH9XXjQmOY7R0Xcf6iNGM7qMRQF5yJu3zTlHA7i2iopFlTKD8qiTtpDFikqS1ckXyhyDsJ1Zy4Cv5DRwdhHmVd-EMKz3mkAvJDdyxBoRxLu6dnTcYGpD7UGTQ4cRTJ91jgHs");'></div>
+</div>
+</header>
+<div class="flex flex-1 flex-col py-8 px-4 md:px-10 lg:px-20 xl:px-40">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] mx-auto flex-1 gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111318] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Complaint Management</h1>
+<p class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal">Overview and management of reported road issues</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                            Settings
+                        </button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#616f89] dark:text-gray-400 text-base font-medium">Total Pending</p>
+<span class="material-symbols-outlined text-amber-500">pending_actions</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-[#111318] dark:text-white text-3xl font-bold leading-tight">124</p>
+<span class="text-green-600 dark:text-green-400 text-sm font-medium mb-1">+5% from last week</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#616f89] dark:text-gray-400 text-base font-medium">Urgent Issues</p>
+<span class="material-symbols-outlined text-red-500">warning</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-[#111318] dark:text-white text-3xl font-bold leading-tight">12</p>
+<span class="text-red-600 dark:text-red-400 text-sm font-medium mb-1">+2 new</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#616f89] dark:text-gray-400 text-base font-medium">In Progress</p>
+<span class="material-symbols-outlined text-primary">construction</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-[#111318] dark:text-white text-3xl font-bold leading-tight">45</p>
+<span class="text-[#616f89] dark:text-gray-500 text-sm font-medium mb-1">Same as yesterday</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#616f89] dark:text-gray-400 text-base font-medium">Resolved Today</p>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="flex items-end gap-2">
+<p class="text-[#111318] dark:text-white text-3xl font-bold leading-tight">8</p>
+<span class="text-green-600 dark:text-green-400 text-sm font-medium mb-1">+10% efficiency</span>
+</div>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="flex flex-col lg:flex-row justify-between gap-4 p-4 bg-white dark:bg-[#1A2230] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
+<input class="h-10 pl-10 pr-4 rounded-lg bg-gray-50 dark:bg-gray-800 border-none ring-1 ring-gray-200 dark:ring-gray-700 focus:ring-2 focus:ring-primary text-sm min-w-[240px] text-[#111318] dark:text-white placeholder:text-gray-400" placeholder="Search ID, Location..." type="text"/>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1 hidden sm:block"></div>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Status: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Severity: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Type: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+</div>
+<div class="flex items-center gap-3 self-end lg:self-auto">
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-5 font-bold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Main Table -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">ID</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 cursor-pointer group hover:text-primary transition-colors">
+<div class="flex items-center gap-1">
+                                            Date
+                                            <span class="material-symbols-outlined text-[16px] opacity-0 group-hover:opacity-100">arrow_downward</span>
+</div>
+</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Issue Type</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Severity</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Location</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+<!-- Row 1 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1024</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 24, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">remove_road</span>
+                                        Pothole
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-red-100 dark:bg-red-900/30 px-2.5 py-0.5 text-xs font-bold text-red-700 dark:text-red-400">
+<span class="size-1.5 rounded-full bg-red-600 dark:bg-red-400"></span>
+                                            High
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">124 Main St, Downtown</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700 px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-gray-600/20">
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1023</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 23, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">traffic</span>
+                                        Traffic Light
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-purple-100 dark:bg-purple-900/30 px-2.5 py-0.5 text-xs font-bold text-purple-700 dark:text-purple-400">
+<span class="material-symbols-outlined text-[14px]">priority_high</span>
+                                            Critical
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">5th Ave &amp; Pine</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-amber-50 dark:bg-amber-900/20 px-2 py-1 text-xs font-medium text-amber-700 dark:text-amber-400 ring-1 ring-inset ring-amber-600/20">
+                                            In Progress
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1022</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 23, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">recycling</span>
+                                        Debris
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-bold text-amber-700 dark:text-amber-400">
+<span class="size-1.5 rounded-full bg-amber-600 dark:bg-amber-400"></span>
+                                            Medium
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">Lincoln Park Drive</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700 px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-gray-600/20">
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1021</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 22, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">water_drop</span>
+                                        Flooding
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-red-100 dark:bg-red-900/30 px-2.5 py-0.5 text-xs font-bold text-red-700 dark:text-red-400">
+<span class="size-1.5 rounded-full bg-red-600 dark:bg-red-400"></span>
+                                            High
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">River Road Underpass</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1020</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 22, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">signpost</span>
+                                        Signage
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-900/30 px-2.5 py-0.5 text-xs font-bold text-blue-700 dark:text-blue-400">
+<span class="size-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
+                                            Low
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">West End Blvd</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-green-50 dark:bg-green-900/20 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-400 ring-1 ring-inset ring-green-600/20">
+                                            Resolved
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="group hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors cursor-pointer">
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="text-sm font-medium text-primary hover:underline">#RC-1019</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 font-feature-settings-tnum">Oct 21, 2023</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-[#111318] dark:text-gray-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-gray-400">forest</span>
+                                        Fallen Branch
+                                    </td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-bold text-amber-700 dark:text-amber-400">
+<span class="size-1.5 rounded-full bg-amber-600 dark:bg-amber-400"></span>
+                                            Medium
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400 truncate max-w-[200px]">Old York Rd</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center rounded-md bg-gray-100 dark:bg-gray-700 px-2 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 ring-1 ring-inset ring-gray-500/10 dark:ring-gray-600/20">
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="text-gray-400 hover:text-primary transition-colors p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] px-6 py-3">
+<div class="hidden sm:flex flex-1 items-center justify-between">
+<div>
+<p class="text-sm text-gray-600 dark:text-gray-400">
+                                    Showing <span class="font-bold text-[#111318] dark:text-white">1</span> to <span class="font-bold text-[#111318] dark:text-white">10</span> of <span class="font-bold text-[#111318] dark:text-white">450</span> results
+                                </p>
+</div>
+<div>
+<nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
+<a class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0" href="#">
+<span class="sr-only">Previous</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</a>
+<a aria-current="page" class="relative z-10 inline-flex items-center bg-primary px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" href="#">1</a>
+<a class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-300 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0" href="#">2</a>
+<a class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-300 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 md:inline-flex" href="#">3</a>
+<span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-400 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 focus:outline-offset-0">...</span>
+<a class="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-300 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0 md:inline-flex" href="#">45</a>
+<a class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-200 dark:ring-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 focus:z-20 focus:outline-offset-0" href="#">
+<span class="sr-only">Next</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

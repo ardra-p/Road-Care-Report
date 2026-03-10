@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Road Care Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "sans": ["Public Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1">
+<div class="flex items-center justify-between whitespace-nowrap px-4 py-3 sm:px-10">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="flex items-center justify-center size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">add_road</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Road Care</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end items-center gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-slate-900 dark:text-slate-200 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Home</a>
+<a class="text-slate-900 dark:text-slate-200 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Check Status</a>
+<a class="text-slate-900 dark:text-slate-200 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="{% url 'map' %}">View All Reports</a>
+</nav>
+</div>
+<div class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-col items-center w-full">
+
+<div class="w-full bg-white dark:bg-background-dark">
+        {% if messages %}
+  {% for message in messages %}
+    <div id="success-message" class="bg-green-100 text-green-800 px-4 py-3 rounded mb-4">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+<div class="layout-container flex h-full grow flex-col items-center">
+<div class="w-full max-w-[960px] px-4 py-6 sm:px-10 lg:px-0">
+<div class="@container">
+<div class="@[480px]:p-4">
+<div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-6 pb-12 pt-40 @[480px]:px-10 shadow-lg relative overflow-hidden" data-alt="Modern clean highway road with asphalt texture" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(16, 22, 34, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoVhfS57mERDW-xHphtIKIve-qGC_NEN2mn5eGhPduHykwn4AcXw-y7CKJfZEFa8ScRyqeqHBVhJ3ICC5dDH-F6aB4RqLZx5Drxnq3mS6PLomnT191xIeLwC3SKvxZuwl0kjLlFWT44E-LjR_XrzmDbE1Qzoeg3WCI4WNiitlj44SZdrRJftZlOZdefCGv7ij5m2NHRqfk2So2TEtLOU6Ss1ahvMyozNbQ--PXp-6y5feXpr3quuoa-NRa8TpH5hIIPXZTZKik-gkH");'>
+<div class="flex flex-col gap-4 text-left max-w-2xl z-10">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl drop-shadow-md">
+                                            Better Roads for a Safer Community
+                                        </h1>
+<h2 class="text-slate-200 text-base font-normal leading-relaxed @[480px]:text-lg max-w-lg">
+                                            Report potholes, trash, and infrastructure issues in seconds. Help us maintain our city's standards through active civic participation.
+                                        </h2>
+</div>
+
+<div class="flex gap-4 z-10 flex-wrap">
+<a href="{% url 'report' %}"> 
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-transform hover:scale-105 shadow-lg">
+<span class="truncate">Report an Issue</span>
+</button>
+</a>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-white/20 backdrop-blur-md border border-white/30 text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-white/30 transition-colors">
+<span class="truncate">Check Status</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark py-12">
+<div class="flex justify-center">
+<div class="flex flex-col max-w-[960px] w-full px-4 sm:px-10">
+<div class="flex flex-col gap-10 @container">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div class="flex flex-col gap-4 max-w-[600px]">
+<h1 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight md:text-4xl">
+                                        What We Do
+                                    </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed">
+                                        Our streamlined process ensures your reports reach the right teams immediately, cutting through red tape.
+                                    </p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+<span class="truncate">Learn More</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex-col shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary size-12 flex items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/30">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Citizen Reports</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed">Submit a geo-tagged photo of the issue directly from your device anywhere, anytime.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex-col shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary size-12 flex items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/30">
+<span class="material-symbols-outlined text-3xl">fact_check</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Authority Reviews</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed">City administrators review the reported road issue, verify the submitted details and images, and assess the severity of the problem to determine the required action.</p>
+</div>
+</div>
+<div class="flex flex-1 gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6 flex-col shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary size-12 flex items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/30">
+<span class="material-symbols-outlined text-3xl">engineering</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Maintenance Deploys</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed">Based on the review, the responsible maintenance team is notified to take necessary corrective measures and update the issue status in the system after resolution.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-background-dark pt-10">
+<div class="flex justify-center">
+<div class="flex flex-col max-w-[960px] w-full px-4 sm:px-10">
+<h2 class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-[-0.015em] pb-3 border-b border-slate-100 dark:border-slate-800">Our Mission &amp; Vision</h2>
+</div>
+</div>
+</div>
+<div class="w-full bg-white dark:bg-background-dark pb-10">
+<div class="flex justify-center">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 sm:px-10">
+<div class="@container">
+<div class="flex flex-col gap-8 py-10 md:flex-row items-center">
+<div class="w-full md:w-1/2 bg-center bg-no-repeat aspect-video bg-cover rounded-xl shadow-md" data-alt="Construction workers looking at blueprints on a road site" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD446DN7SI2GocQ6_KgDllhmi3ocECtLWMMbGuvD5JG1AiTAlJZ62JSyT8VALIa1JKDJqhW5uiosZ9Ppa_4vlp6JYPAubXfAPkqwqqSUd9JVCFz5uicsBERuWGhJIoED8w5jKUbnR-JaRtkvbmyt9cGHBm_Dv-SEio4d6snCj_xgz8tjTup46BQMM5Boib_yfOzAqX7fLBHrJK7yr2SWk4zh3gUCzw6JjJKX3yG5bHX_6JJ2ChR-wu0TLc5szzeMoAtKfFMXLEdn9vg");'>
+</div>
+<div class="flex flex-col gap-6 md:w-1/2 md:pl-6">
+<div class="flex flex-col gap-3 text-left">
+<div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-xs">
+<span class="material-symbols-outlined text-sm">flag</span>
+                                            Mission
+                                        </div>
+<h1 class="text-slate-900 dark:text-white text-3xl font-black leading-tight tracking-[-0.02em]">
+                                            Bridging the Gap
+                                        </h1>
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed">
+                                            To provide a seamless, transparent communication channel between citizens and public works departments. We believe that road safety is a shared responsibility, and technology is the bridge that fosters a collaborative environment for safer infrastructure.
+                                        </p>
+</div>
+<button class="flex min-w-[84px] w-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-bold leading-normal hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="truncate">Read Our Charter</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-background-light dark:bg-slate-900/30 py-10">
+<div class="flex justify-center">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 sm:px-10">
+<div class="@container">
+<div class="flex flex-col-reverse gap-8 py-6 md:flex-row items-center">
+<div class="flex flex-col gap-6 md:w-1/2 md:pr-6">
+<div class="flex flex-col gap-3 text-left">
+<div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-xs">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                            Vision
+                                        </div>
+<h1 class="text-slate-900 dark:text-white text-3xl font-black leading-tight tracking-[-0.02em]">
+                                            A Zero-Hazard Future
+                                        </h1>
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed">
+                                            We envision a city with zero unattended road hazards and 100% operational transparency. By empowering every citizen to be the eyes of the city, we aim to reduce accident rates and improve the longevity of our public transit networks.
+                                        </p>
+</div>
+</div>
+<div class="w-full md:w-1/2 bg-center bg-no-repeat aspect-video bg-cover rounded-xl shadow-md" data-alt="Futuristic clean city road with solar panels and green trees" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvjWRM0pocDVun37f-GdRq1zWYp-g4SD0ltMZQIpVJS9XR3pA75tWLjHu-wg7ThZeWVd20wezLYKf2Z8gAFUkJ8k7upJ_h5lFBAK0paoCf-giPzzfMC7-yhfApKrhw96lRtzJYz7wyaI885mqcHOUXrOYWRu1p_1kXuU2zlIJcYos_EKMiOBE_Oitx3Xg-qMj8ga_hJ_jH3z_QgWI0oCdt11Qlh-lwJUUCDRSNQN6PpjL-AGnVTEzh8S_O0zTCI1j0mYkeP9NxToBy");'>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-slate-900 py-16 text-white border-t border-slate-800">
+<div class="flex justify-center">
+<div class="flex flex-col max-w-[960px] w-full px-4 sm:px-10 items-center text-center">
+<div class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary ring-2 ring-primary/40">
+<span class="material-symbols-outlined text-4xl">admin_panel_settings</span>
+</div>
+<h2 class="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">Government Authority Portal</h2>
+<p class="mb-8 max-w-2xl text-lg text-slate-400">
+                            This restricted area is reserved for local authorities and certified officers to manage submitted reports, assign maintenance crews, and track resolution progress.
+                        </p>
+<div class="flex flex-col items-center gap-4 sm:flex-row">
+    <a href="{% url 'login' %}">
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-12 px-8 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-colors shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-xl">login</span>
+<span class="truncate">Admin Login</span>
+</button></a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="flex justify-center">
+<div class="flex flex-col max-w-[960px] w-full px-4 sm:px-10 gap-8">
+<div class="flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4 max-w-xs">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="flex items-center justify-center size-6 text-primary">
+<span class="material-symbols-outlined">add_road</span>
+</div>
+<h3 class="text-lg font-bold">Road Care</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                Dedicated to maintaining safe and reliable infrastructure through community collaboration.
+                            </p>
+</div>
+<div class="flex gap-10 sm:gap-16 flex-wrap">
+<div class="flex flex-col gap-4">
+<h4 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Platform</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Report Issue</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Check Status</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Admin Portal</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-slate-900 dark:text-white text-sm font-bold uppercase tracking-wider">Support</h4>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Help Center</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Contact Us</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-slate-800 w-full"></div>
+<div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-400 dark:text-slate-500">
+<p>© 2026 Road Care Report. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="hover:text-slate-600 dark:hover:text-slate-300" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="hover:text-slate-600 dark:hover:text-slate-300" href="#"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script>
+setTimeout(function() {
+    let msg = document.getElementById("success-message");
+    if(msg){
+        msg.style.display = "none";
+    }
+}, 5000);
+</script>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Admin Profile - Road Care</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full">
+<div class="p-6 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">edit_road</span>
+</div>
+<h1 class="font-bold text-lg tracking-tight">Road Care</h1>
+</div>
+<nav class="flex-1 p-4 space-y-2">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="text-sm font-medium">Incidents</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">Profile</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2 mb-4">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Administrator professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPvEWWYjZ_xOdax4eNVHPcAu8ibIhjxjI-caeJtBv3BQ_kFjKowQrLSFAmqGnaxAis_AgyN23okuDH3hKc5MDC-APDyN926QhD_8awbPQF6s5Pt_BXwy8tCoqBatC7TGyLa3bjOVxdsiB4LJq0Cd9hIpLGX-7dNfAfot_cZgdw57F2OD8C-YQi6YpuZEUAps9FjyRxaQdqT64OgF3nG_54UkO8MAZIKe7tnVqYWUU_qv9zpvjYLsR5Mp6e4K37YRtwTUIumSNVOFkC"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Alex Rivera</span>
+<span class="text-xs text-slate-500">System Admin</span>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-bold text-white bg-primary rounded-lg hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-sm">logout</span>
+                    Logout
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<h2 class="font-semibold text-lg">Admin Profile</h2>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer p-2 hover:bg-slate-100 rounded-full transition-colors">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</div>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<span class="text-sm font-medium text-slate-600">October 24, 2023</span>
+</div>
+</header>
+<!-- Profile Content -->
+<div class="p-8 max-w-5xl mx-auto">
+<!-- Profile Hero -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 mb-8">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative">
+<div class="size-32 rounded-full border-4 border-primary/20 p-1">
+<img class="w-full h-full rounded-full object-cover" data-alt="Main administrator profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE-JqJNNT3pgQosE7g_htNeK9JZ_0vg1JO3dK1vPQ9zcoQcOAghOMgPoo1FoMnk8wIaQCa6ndmJdX-sj1QH7mc_vWLXqxtr5SZRdx7CpMPRhJpkyn2gogDdOuqgZwDpAx1uVqKo3vjp4_BvV_Exn6tIjjQbWha3Eumgi4Fz1EMfwxjyQTJypnGN6PSyTLdDU1Q7doMwO1sz6W6YY25dracWxIJ3zE5Gl3P5xR2O0IGmpORTL-NvbxbK4KfMMLrBNrgnCd4sntzQ6A2"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2 rounded-full shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-base">photo_camera</span>
+</button>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h3 class="text-2xl font-bold">Alex Rivera</h3>
+<p class="text-slate-500">Super Administrator • Road Care System</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
+<span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold rounded-full flex items-center gap-1">
+<span class="size-1.5 bg-green-500 rounded-full"></span> Active Status
+                                </span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified_user</span> Verified Account
+                                </span>
+</div>
+</div>
+<div>
+<button class="flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-lg font-bold text-sm hover:shadow-lg hover:shadow-primary/30 transition-all">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit Profile
+                            </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<!-- Basic Info -->
+<div class="space-y-8">
+<section class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+<h4 class="font-bold">Administrator Information</h4>
+</div>
+<div class="p-6 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Full Name</p>
+<p class="text-sm font-medium">Alex Rivera</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Email Address</p>
+<p class="text-sm font-medium">alex.rivera@roadcare.gov</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Admin ID</p>
+<p class="text-sm font-medium">RC-ADMIN-402</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Created At</p>
+<p class="text-sm font-medium">October 24, 2023, 14:32 PM</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Department</p>
+<p class="text-sm font-medium">Infrastructure &amp; Public Safety</p>
+</div>
+<div class="space-y-1">
+<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Role Permissions</p>
+<p class="text-sm font-medium">Full System Access</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+</div>
+<!-- Side Controls -->
+<div class="space-y-8">
+<!-- Quick Stats -->
+</div>
+</div>
+<!-- Danger Zone -->
+</div>
+</main>
+</div>
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #135bec;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #135bec;
+        }
+    </style>
+</body></html>

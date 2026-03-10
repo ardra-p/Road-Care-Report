@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Road Care Admin Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111318] dark:text-white min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="w-full bg-white dark:bg-[#1e2430] border-b border-[#f0f2f4] dark:border-[#2a3140] px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3 text-[#111318] dark:text-white">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">add_road</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Road Care Admin</h2>
+</div>
+<button class="flex items-center justify-center gap-2 overflow-hidden rounded-lg h-9 px-4 bg-[#f0f2f4] hover:bg-[#e4e7eb] dark:bg-[#2a3140] dark:hover:bg-[#363d4d] text-[#111318] dark:text-white text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span class="truncate">Contact Support</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+<div class="w-full max-w-[1024px] bg-white dark:bg-[#1e2430] rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+<!-- Left Side: Image/Visual -->
+<div class="relative hidden md:flex w-1/2 bg-primary flex-col justify-between p-10 overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay" data-alt="Abstract aerial view of city roads and intersections at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNxvJiiDsnRDcitHxJHF5UeqHSSLsOxX527z8SprNUYdGU_HWaTSL7qkcakJGAWOmDv989HqFabif-TxXbj77RENJuYEn3DXdJN9FrULbHOFCEqpTiH3sz9-HQfq6eU2bv0CzWGj2MXmyZUHKOEUkZXbjUXDoMNtloAET0D_CXYXv_SoqRBIaLMyIRrljp6vW4e9rh67LwO-zfK2MJtSm57yOHyw6i0G1WNb8GPFImL6Xbw6E7Nc850F9jKlnQww_l-v-eIlBJdJxV'); background-size: cover; background-position: center;"></div>
+<div class="absolute inset-0 z-0 bg-gradient-to-t from-primary/90 to-primary/40"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium mb-6">
+<span class="material-symbols-outlined text-sm mr-1">security</span> Secure Portal
+                    </div>
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight mb-4">
+                        Monitor, Manage, Maintain.
+                    </h1>
+<p class="text-blue-100 text-lg leading-relaxed max-w-sm">
+                        Efficiently manage road infrastructure reports and dispatch maintenance teams from a centralized dashboard.
+                    </p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="flex items-center gap-3 mb-2">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="Profile picture of a support agent" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary object-cover" data-alt="Profile picture of a support agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgDmPfZYaVFeqaNvBcihKEjRzWGQgHCEGIjOLnWck2V5nZb0erCyBbqSJdmpCRWKzjJJSVxmo68QH4Ks_Pk4DQcwLHCYRI0M_0IatG9cSTG0SYYETuzYRVicUXlJDLQS0jiAUzzKCMKvGo7k2T141aWUgPhgQlrQppLE5Y9MywO9_1E4Qf3fBkR2u2NBip6GOKrt5mMTq2brAxgzHb6XQDKPKJwnaQb413W1c3UNEYqvkFt5gF0tOjDqLFzaky6IHy1d1Uvq6xyCDa"/>
+<img alt="Profile picture of a support agent" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary object-cover" data-alt="Profile picture of a support agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxSJxAqCanz9xCcGEIg59XF6IbQklNBRHOT74pF0rlj_gGW2lue-4DJravGkiV6xfs_aeRogSTCh53a3yGe31UpmgLk_9lBVvCL5pWGiP3WthQlMN0z3vhX13CVyeC30uQc6DSiZZ9p-KM3N-CB9DR9alRVz_KiW3jC5dKoPjN9KsHhewbvPTY27X70_GnAHIeW0GvLEnVX8GChlxTynMA0Sc_1jRn2eEDrE_t9r8b5t5Ig4-RcLHqc8E6R3bkLVR7RPddxzsUlUBG"/>
+<img alt="Profile picture of a support agent" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary object-cover" data-alt="Profile picture of a support agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGDjbUd-Ja4zF_RiJMpP_Tx3DtakywpKEpk560Mu0xK8pnZLwa-cmEMStDlR7Vmz5lgTC3jc5fpCdMRJWScJYIxB13diISRdgs-Rf2v_QSU9Aodufvhkie5PjkRFcnOqugeDv4CyNOq3_dODHTLaYzrK0NYAnq4yNsv0ZI0aqG_xHwLuq7nH1ys_saxetPfxCLsBXIcWZuPQS2qUHOm3kwURodsIjrQU2bxAa_hJj0YyXdOWTdMMWdF-sGc6Mo1tvU0879DgnaaQ_k"/>
+</div>
+<span class="text-blue-100 text-sm font-medium">Active Administrators</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full md:w-1/2 p-8 sm:p-12 lg:p-16 flex flex-col justify-center relative">
+<div class="flex flex-col gap-2 mb-8">
+<p class="text-[#111318] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Admin Access</p>
+<p class="text-[#616f89] dark:text-gray-400 text-base font-normal">Please identify yourself to access the Road Care dashboard.</p>
+</div>
+<form class="flex flex-col gap-5" method="post">
+<!-- Name Field -->
+ {% csrf_token %}
+
+<label class="flex flex-col w-full">
+<p class="text-[#111318] dark:text-gray-200 text-sm font-semibold leading-normal pb-2">Administrator Name</p>
+<div class="relative">
+<input name="admin_name" class="peer form-input flex w-full min-w-0 resize-none overflow-hidden rounded-lg text-[#111318] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdfe6] dark:border-[#3f4859] bg-white dark:bg-[#2a3140] focus:border-primary h-12 pl-11 pr-4 text-base font-normal transition-all placeholder:text-[#616f89] dark:placeholder:text-gray-500" placeholder="e.g. Jane Doe" type="text" value=""/>
+<div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#616f89] dark:text-gray-500 peer-focus:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</label>
+<!-- Phone Number Field -->
+<label class="flex flex-col w-full">
+  <p class="text-[#111318] dark:text-gray-200 text-sm font-semibold leading-normal pb-2">
+    Registered Email Address
+  </p>
+  <div class="relative">
+    <input
+     name="email"
+      class="peer form-input flex w-full min-w-0 resize-none overflow-hidden rounded-lg text-[#111318] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdfe6] dark:border-[#3f4859] bg-white dark:bg-[#2a3140] focus:border-primary h-12 pl-11 pr-4 text-base font-normal transition-all placeholder:text-[#616f89] dark:placeholder:text-gray-500"
+      placeholder="example@email.com"
+      type="email"
+      value=""
+    />
+    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#616f89] dark:text-gray-500 peer-focus:text-primary transition-colors">
+      <span class="material-symbols-outlined">mail</span>
+    </div>
+  </div>
+</label>
+
+<!-- Secure Admin Code Field -->
+<label class="flex flex-col w-full">
+<div class="flex justify-between items-center pb-2">
+<p class="text-[#111318] dark:text-gray-200 text-sm font-semibold leading-normal">Secure Admin Code</p>
+<a class="text-primary text-xs font-semibold hover:underline" href="#">Forgot code?</a>
+</div>
+<div class="relative flex w-full items-stretch rounded-lg group">
+<input name="password" class="peer form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111318] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dbdfe6] dark:border-[#3f4859] bg-white dark:bg-[#2a3140] focus:border-primary h-12 pl-11 pr-12 text-base font-normal transition-all placeholder:text-[#616f89] dark:placeholder:text-gray-500" placeholder="Enter 6-digit code" type="password" value=""/>
+<div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#616f89] dark:text-gray-500 peer-focus:text-primary transition-colors">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<button class="absolute right-0 top-0 bottom-0 px-3 flex items-center justify-center text-[#616f89] dark:text-gray-500 hover:text-[#111318] dark:hover:text-white cursor-pointer transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</label>
+<div class="pt-2">
+<button  type="submit" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary hover:bg-primary/90 text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+<span class="truncate">Access Dashboard</span>
+<span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="mt-8 flex items-center justify-center gap-2 text-xs text-[#616f89] dark:text-gray-500">
+<span class="material-symbols-outlined text-sm">encrypted</span>
+<span>256-bit SSL Encrypted Connection</span>
+</div>
+<div class="absolute bottom-4 left-0 w-full text-center">
+<p class="text-[10px] text-[#9ca3af] dark:text-gray-600">© 2024 Road Care Report System. Authorized Personnel Only.</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

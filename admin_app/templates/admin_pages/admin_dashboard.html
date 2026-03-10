@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Road Care Admin Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden selection:bg-primary/20">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="w-64 flex-shrink-0 flex flex-col bg-white dark:bg-[#1e2732] border-r border-slate-200 dark:border-slate-800 transition-all duration-300 z-20">
+<div class="h-full flex flex-col justify-between p-4">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-primary/10 flex items-center justify-center rounded-xl w-10 h-10 text-primary">
+<span class="material-symbols-outlined text-2xl">add_road</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Road Care</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Admin Panel</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-md shadow-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">account_circle</span>
+<span class="text-sm font-medium">Admin Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group" href="{% url 'list' %}">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">assignment</span>
+<span class="text-sm font-medium">List of Complaints</span>
+<span class="ml-auto bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs font-bold px-2 py-0.5 rounded-full">{{ pending_issues }}</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2 border-t border-slate-200 dark:border-slate-700 pt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all" href="{% url 'logout' %}">
+<span class="material-symbols-outlined text-[22px]">logout</span>
+<span class="text-sm font-medium">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto relative h-full">
+<div class="max-w-[1400px] mx-auto p-6 lg:p-10 flex flex-col gap-8 pb-20">
+<header class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Dashboard Overview</h2>
+<p class="text-slate-500 dark:text-slate-400 text-base">Real-time statistics for road infrastructure reports</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative hidden sm:block">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-lg">calendar_today</span>
+<button class="pl-10 pr-4 py-2.5 bg-white dark:bg-[#1e2732] border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+                            Jan 24, 2026 - Mar 24, 2026
+                        </button>
+</div>
+</div>
+</header>
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#1e2732] p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-slate-400">folder_copy</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Total Reports</p>
+<div class="flex items-end gap-3">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ total_reports }}</h3>
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> 
+                        </span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1e2732] p-6 rounded-xl border-l-4 border-orange-500 shadow-sm flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-orange-500">pending_actions</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Pending Issues</p>
+<div class="flex items-end gap-3">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ pending_issues }}</h3>
+<span class="text-xs font-medium text-slate-400 mb-1">Action required</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1e2732] p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-blue-500">engineering</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">In Progress</p>
+<div class="flex items-end gap-3">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ in_progress }}</h3>
+<span class="flex items-center text-xs font-bold text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-1.5 py-0.5 rounded mb-1">
+                            Active Crews
+                        </span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1e2732] p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-emerald-500">check_circle</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Resolved Cases</p>
+<div class="flex items-end gap-3">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">{{ resolved_cases }}</h3>
+<span class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30 px-1.5 py-0.5 rounded mb-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> 8%
+                        </span>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#1e2732] p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap gap-3 items-center">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300 mr-2">Quick Actions:</span>
+<a href="{% url 'report' %}">
+<button class="flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg transition-colors border border-slate-200 dark:border-slate-600">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                            New Complaint
+                        </button> </a>
+                        <a href="{% url 'urgent_reports' %}">
+<button class="flex items-center gap-2 px-3 py-2 bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 text-orange-700 dark:text-orange-400 text-sm font-medium rounded-lg transition-colors border border-orange-200 dark:border-orange-800/30">
+<span class="material-symbols-outlined text-lg">warning</span>
+                            View Urgent 
+                        </button> </a>
+</div>
+<div class="bg-white dark:bg-[#1e2732] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex-1">
+<div class="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Reports</h3>
+<div class="flex gap-2">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 uppercase font-bold text-xs">
+<tr>
+<th class="px-6 py-3">ID</th>
+<th class="px-6 py-3">Issue Type</th>
+<th class="px-6 py-3">Location</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3">Issue Depth</th>
+<th class="px-6 py-3 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+
+{% for report in recent_reports %}
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+#{{ report.issue_id }}
+</td>
+
+<td class="px-6 py-4 flex items-center gap-2">
+{% if report.image_path %}
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-700 bg-center bg-cover"
+style="background-image: url('{{ report.image_path.url }}');">
+</div>
+{% else %}
+<div class="size-8 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs">
+No Image
+</div>
+{% endif %}
+<span>{{ report.issue_title }}</span>
+
+</td>
+
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">
+{{ report.address }}
+</td>
+
+<td class="px-6 py-4">
+
+{% if report.admin_status == "submitted" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-orange-100 text-orange-700">
+Pending
+</span>
+
+{% elif report.admin_status == "working" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-blue-100 text-blue-700">
+In Progress
+</span>
+
+{% elif report.admin_status == "resolved" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-700">
+Resolved
+</span>
+{% elif report.admin_status == "approved" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-700">
+Approved
+</span>
+{% endif %}
+
+</td>
+<td class="px-6 py-4 text-right">
+
+{% if report.status == "Minor" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-700">
+Minor
+</span>
+
+{% elif report.status == "Moderate" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-yellow-100 text-yellow-700">
+Moderate
+</span>
+
+{% elif report.status == "Major" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-orange-100 text-orange-700">
+Major
+</span>
+
+{% elif report.status == "Critical" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-red-100 text-red-700">
+Critical
+</span>
+{% endif %}
+
+</td>
+<td class="px-6 py-4 text-right">
+
+<a href="{% url 'manage' report.issue_id %}"
+class="text-primary hover:text-primary/80 font-medium">
+Manage
+</a>
+
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-slate-100 dark:border-slate-700 text-center">
+<button class="text-sm font-bold text-primary hover:underline">View All Complaints</button>
+</div>
+</div>
+</div>
+
+<div class="h-96 bg-white dark:bg-[#1e2732] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+<div class="flex-1 flex flex-col justify-center gap-6 my-4">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h4 class="text-3xl font-bold text-slate-900 dark:text-white">{{ total_reports }}</h4>
+<p class="text-xs text-slate-500">Total Cases</p>
+</div>
+<div class="text-right">
+<span class="text-emerald-600 dark:text-emerald-400 font-bold text-sm">{{ resolved_percent }}% Resolved</span>
+</div>
+</div>
+
+<div class="w-full h-8 rounded-full flex overflow-hidden bg-slate-100 dark:bg-slate-700">
+<div class="h-full bg-emerald-500 flex items-center justify-center text-[10px] text-white font-bold" style="width:0%">0%</div>
+<div class="h-full bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold" style="width: 0%">10%</div>
+<div class="h-full bg-orange-500 flex items-center justify-center text-[10px] text-white font-bold" style="width: 100%">100%</div>
+</div>
+
+</div>
+<div class="flex flex-col gap-3 mt-2"> 
+    <div class="flex items-center justify-between"> 
+        <div class="flex items-center gap-2"> 
+            <div class="w-3 h-3 rounded-full bg-emerald-500">
+            </div> <span class="text-sm text-slate-600 dark:text-slate-300">Resolved</span> </div> 
+            <span class="text-sm font-semibold text-slate-900 dark:text-white">{{ resolved_cases }}</span> </div>
+             <div class="flex items-center justify-between"> <div class="flex items-center gap-2">
+                 <div class="w-3 h-3 rounded-full bg-blue-500"></div> <span class="text-sm text-slate-600 dark:text-slate-300">In Progress</span> 
+                </div> <span class="text-sm font-semibold text-slate-900 dark:text-white">{{ in_progress }}</span> </div> <div class="flex items-center justify-between"> 
+                    <div class="flex items-center gap-2"> <div class="w-3 h-3 rounded-full bg-orange-500"></div> <span class="text-sm text-slate-600 dark:text-slate-300">Pending</span> </div>
+                     <span class="text-sm font-semibold text-slate-900 dark:text-white"> {{ pending_issues }}</span> </div> </div> </div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+
+</section>
+</div>
+</main>
+</div>
+
+</body></html>

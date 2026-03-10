@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Complaints List</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<script>
+        // Simple script to toggle dark mode for demonstration
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111318] dark:text-white font-display transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-[#111318] dark:text-white">
+<div class="bg-primary/10 flex items-center justify-center rounded-xl w-10 h-10 text-primary">
+<span class="material-symbols-outlined text-2xl">add_road</span>
+</div>
+<h2 class="text-[#111318] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Road Care Admin</h2>
+</div>
+</header>
+<div class="flex flex-1 flex-col py-8 px-4 md:px-10 lg:px-20 xl:px-40">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] mx-auto flex-1 gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111318] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Complaint Management</h1>
+<p class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal">Overview and management of reported road issues</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 bg-white dark:bg-[#1A2230] border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+                            Settings
+                        </button>
+</div>
+</div>
+<!-- Filters & Toolbar 
+<div class="flex flex-col lg:flex-row justify-between gap-4 p-4 bg-white dark:bg-[#1A2230] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
+<input class="h-10 pl-10 pr-4 rounded-lg bg-gray-50 dark:bg-gray-800 border-none ring-1 ring-gray-200 dark:ring-gray-700 focus:ring-2 focus:ring-primary text-sm min-w-[240px] text-[#111318] dark:text-white placeholder:text-gray-400" placeholder="Search ID, Location..." type="text"/>
+</div>
+<div class="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1 hidden sm:block"></div>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Status: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Severity: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="text-[#111318] dark:text-white text-sm font-medium">Type: All</span>
+<span class="material-symbols-outlined text-gray-500 text-[20px]">arrow_drop_down</span>
+</button>
+</div>
+<div class="flex items-center gap-3 self-end lg:self-auto">
+<button class="flex h-10 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-5 font-bold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+ Main Table -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+</thead>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 uppercase font-bold text-xs">
+<tr>
+<th class="px-6 py-3">ID</th>
+<th class="px-6 py-3">Issue Type</th>
+<th class="px-6 py-3">Location</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3">Issue Depth</th>
+<th class="px-6 py-3 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+
+{% for report in recent_reports %}
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+
+<td class="px-6 py-4 font-medium text-slate-900 dark:text-white">
+#{{ report.issue_id }}
+</td>
+
+<td class="px-6 py-4 flex items-center gap-2">
+{% if report.image_path %}
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-700 bg-center bg-cover"
+style="background-image: url('{{ report.image_path.url }}');">
+</div>
+{% else %}
+<div class="size-8 rounded bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs">
+No Image
+</div>
+{% endif %}
+<span>{{ report.issue_title }}</span>
+
+</td>
+
+<td class="px-6 py-4 text-slate-600 dark:text-slate-400">
+{{ report.address }}
+</td>
+
+<td class="px-6 py-4">
+
+{% if report.admin_status == "submitted" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-orange-100 text-orange-700">
+Pending
+</span>
+
+{% elif report.admin_status == "working" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-blue-100 text-blue-700">
+In Progress
+</span>
+
+{% elif report.admin_status == "resolved" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-700">
+Resolved
+</span>
+{% elif report.admin_status == "approved" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-emerald-100 text-emerald-700">
+Approved
+</span>
+{% endif %}
+
+</td>
+<td class="px-6 py-4 text-right">
+
+{% if report.status == "Minor" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-green-100 text-green-700">
+Minor
+</span>
+
+{% elif report.status == "Moderate" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-yellow-100 text-yellow-700">
+Moderate
+</span>
+
+{% elif report.status == "Major" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-orange-100 text-orange-700">
+Major
+</span>
+
+{% elif report.status == "Critical" %}
+<span class="px-2 py-1 rounded text-xs font-bold bg-red-100 text-red-700">
+Critical
+</span>
+{% endif %}
+
+</td>
+<td class="px-6 py-4 text-right">
+
+<a href="{% url 'manage' report.issue_id %}"
+class="text-primary hover:text-primary/80 font-medium">
+Manage
+</a>
+
+</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2230] px-6 py-3">
+<div class="hidden sm:flex flex-1 items-center justify-between">
+<div>
+<p class="text-sm text-gray-600 dark:text-gray-400">
+                                    Showing <span class="font-bold text-[#111318] dark:text-white">1</span> to <span class="font-bold text-[#111318] dark:text-white">1</span> of <span class="font-bold text-[#111318] dark:text-white"></span> results
+                                </p>
+</div>
+<div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
